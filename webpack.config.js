@@ -5,7 +5,7 @@ module.exports = (env, arg) => {
   return {
     mode: "development", // 'production'
     entry: {
-      "project-bundle": "./src/index.ts",
+      "project-bundle": "./src/index.tsx",
     },
     output: {
       filename: "[name].main.js",
@@ -31,6 +31,13 @@ module.exports = (env, arg) => {
         {
           test: /\.tsx?$/,
           loader: "ts-loader",
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            "desvg-loader/react", // Add loader (use 'desvg-loader/react' for React)
+            "svg-loader", // svg-loader must precede desvg-loader
+          ],
         },
         {
           test: /\.css$/,
