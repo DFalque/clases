@@ -17,7 +17,7 @@ describe('testing life bar', () => {
 		// await screen.findByText('dfg')
 	})
 
-	it('should change the life bar point when player life points change', () => {
+	it('should change the life bar point when player life points changes', () => {
 		act(() => {
 			player.receiveDamage(10)
 		})

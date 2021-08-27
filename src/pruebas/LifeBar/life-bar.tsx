@@ -39,7 +39,7 @@ export default function LifeBar (props: LifeBarProps) {
 
 useEffect(() => {
 	
-	// return player.subscribe(event=>setLife(event.life))
+	return player.subscribe(event=>setLife(event.life))
 }, [])
 
 		return (
