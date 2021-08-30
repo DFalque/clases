@@ -14,7 +14,6 @@ describe('testing life bar', () => {
 			<LifeBar player={player}/>
 		)
 
-		// await screen.findByText('dfg')
 	})
 
 	it('should change the life bar point when player life points changes', () => {
