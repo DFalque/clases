@@ -9,7 +9,7 @@ export default class Monster {
     private _name: string = 'Boo';
     private _onChange: Observable<MonsterEvent>= new Observable();
 
-
+    //TODO: think about to change this behaviour at runtime using dependency injection
     receiveDamage(value){
         this._life -= value
         this._onChange.notify({life: this._life});

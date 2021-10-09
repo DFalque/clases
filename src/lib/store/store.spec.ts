@@ -1,5 +1,6 @@
-import { dataStore, Persistent, resetStore, Store } from "./store";
-
+import { dataStore, MemoryStore, resetStore } from "./MemoryStore";
+import { SqlStore } from "./SqlStore";
+import { Persistent, Store } from "./store";
 
 interface Person extends Persistent {
 	name:string
@@ -17,6 +18,8 @@ describe( 'Store', ()=> {
 		const person2: Person = { id: 'keyPerson2', name: 'Maria', age: 20 }
 
 		beforeEach( ()=> {
+			Store.useConcreteStore( new MemoryStore() )
+			// Store.useConcreteStore( new SqlStore() )
 			resetStore({
 				initTest1:{
 					id: 'initTest1',
@@ -46,9 +49,9 @@ describe( 'Store', ()=> {
 			});
 		})
 
-		it( 'should find by id', ()=>{
-			const result = Store.findByID('initTest1');
-      expect(result).toEqual({
+		it( 'should find by id', async ()=>{
+			const result = await Store.findByID('initTest1');
+      		expect(result).toEqual({
 				id: 'initTest1',
 				data: {
 					value: 'testInitString', 
@@ -63,31 +66,29 @@ describe( 'Store', ()=> {
 				Store.save( person2 );
 			})
 
-			it( 'should find equal person by name', ()=>{
-				const result = Store.findByFields({ field: 'name', operation: '==', value: 'Pepe' })
+			it( 'should find equal person by name', async ()=>{
+				const result = await Store.findByFields({ field: 'name', operation: '==', value: 'Pepe' })
 				expect(result[0]).toEqual({ ...person1 })
 			})
 
-			it( 'should find equal person by name and age', ()=>{
-				const result = Store.findByFields([
+			it( 'should find equal person by name and age', async ()=>{
+				const result = await Store.findByFields([
 					{ field: 'name', operation: '==', value: 'Pepe' },
 					{ field: 'age', operation: '==', value: 30 }
 				])
 				expect(result[0]).toEqual({ ...person1 })
 			})
 
-			it( 'should find elements greater than value', ()=>{
-				const result = Store.findByFields({ field: 'age', operation: '>=', value: 20 })
+			it( 'should find elements greater than value', async ()=>{
+				const result = await Store.findByFields({ field: 'age', operation: '>=', value: 20 })
 				expect( result.length ).toBe( 2 )
 				expect(result[0]).toEqual({ ...person1 })
 			})
 		})
 		
-		it( 'should delete data', ()=>{
-			const result = Store.delete("initTest1")
-			expect(result).toEqual(true)
+		it( 'should delete data', async ()=>{
+			await Store.delete("initTest1")
 			expect(dataStore["initTest1"]).toBeUndefined()
-           
 		})
 
 	})
