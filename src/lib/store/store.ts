@@ -17,6 +17,7 @@ export interface StoreBase {
 	delete(id:string): Promise<void>
 }
 
+//TODO: convert to a real singleton
 export class Store {
 	private static storeInstance: StoreBase
 

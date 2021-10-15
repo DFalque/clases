@@ -1,5 +1,5 @@
 import { dataStore, MemoryStore, resetStore } from "./MemoryStore";
-import { SqlStore } from "./SqlStore";
+//import { SqlStore } from "./SqlStore";
 import { Persistent, Store } from "./store";
 
 interface Person extends Persistent {
@@ -10,7 +10,6 @@ interface Person extends Persistent {
 		city: string
 	}
 }
-
 describe( 'Store', ()=> {
 
 	describe( 'Generic operations', ()=> {

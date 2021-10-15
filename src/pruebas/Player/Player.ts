@@ -12,10 +12,10 @@ type PlayerEvent = PropChangeEvent<Player>;
 const totalLife: number = 100
 
 export default class Player {
-    private _life: number = totalLife;
-    private _armor: number = 100;
-    private _name: string = 'Goku';
-    private _potions: Potion[];
+    private _life: number = totalLife
+    private _armor: number = 100
+    private _name: string = 'Goku'
+    private _potions: Potion[]
     private _onChange: Observable<PlayerEvent> = new Observable()
 
     drinkPotion (potion: Potion ) {

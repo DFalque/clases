@@ -27,12 +27,3 @@ export class Observable<Event> {
 		this.subscribers.forEach((callback)=>callback( event ))
 	} 
 }
-
-
-
-
-
-
-
-
-
