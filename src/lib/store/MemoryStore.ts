@@ -8,7 +8,6 @@ export function resetStore( initialData: MemStore ) {
 	dataStore = {...initialData}
 }
 
-
 export class MemoryStore implements StoreBase {
 
 	 static compare: {[ operation: string ]: ( val1: unknown, val2: unknown )=>boolean } = {
@@ -21,7 +20,7 @@ export class MemoryStore implements StoreBase {
 	} 
 
 	save( data: Persistent ) {
-		dataStore[ data.id ] = data 
+		dataStore[ data.id ] = {...data }
 		return Promise.resolve()
 	}
 

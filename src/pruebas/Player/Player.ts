@@ -1,5 +1,7 @@
 import { Callback, Observable, PropChangeEvent } from '../../lib/observer/observable';
 import {Potion} from './Potion'
+import {Persistent} from "../../lib/store/store";
+
 
 // interface PlayerEvent {
 //     life: number;
@@ -11,7 +13,7 @@ type PlayerEvent = PropChangeEvent<Player>;
 
 const totalLife: number = 100
 
-export default class Player {
+export default class Player extends Persistent {
     private _life: number = totalLife
     private _armor: number = 100
     private _name: string = 'Goku'

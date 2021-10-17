@@ -2,7 +2,7 @@ import { dataStore, MemoryStore, resetStore } from "./MemoryStore";
 //import { SqlStore } from "./SqlStore";
 import { Persistent, Store } from "./store";
 
-interface Person extends Persistent {
+class Person extends Persistent {
 	name:string
 	age: number
 	address?: {

@@ -1,5 +1,5 @@
 
-export interface Persistent {
+export class Persistent {
 	id: string
 	[ key: string ]: any 
 }
@@ -18,6 +18,29 @@ export interface StoreBase {
 }
 
 //TODO: convert to a real singleton
+// class Singleton {
+// 	private static _instance 
+// 	private _counter;
+
+// 	private constructor() {
+// 		this._counter = 0
+// 	}
+
+// 	static get instance() {
+// 		if ( !this._instance ) this._instance = new Singleton()
+// 		return this._instance
+// 	}
+
+// 	addToCounter() {
+// 		this._counter++
+// 		return this._counter
+// 	}
+// }
+
+// const a = Singleton.instance.addToCounter()
+// const b = Singleton.instance.addToCounter()
+
+
 export class Store {
 	private static storeInstance: StoreBase
 
